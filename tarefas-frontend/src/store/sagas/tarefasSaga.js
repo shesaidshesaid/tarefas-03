@@ -1,3 +1,5 @@
+// src/store/sagas/tarefasSaga.js
+
 import { call, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 import {
@@ -58,6 +60,20 @@ function* addTarefaSaga(action) {
   }
 }
 
+// Saga para deletar tarefa
+function* deleteTarefaSaga(action) {
+  try {
+    yield call(
+      axios.delete,
+      `https://tarefas02-0370240489c0.herokuapp.com/api/tarefas/${action.payload}`
+    );
+    yield put(deleteTarefaSuccess(action.payload));
+  } catch (error) {
+    yield put(deleteTarefaFailure(error.message));
+    console.error('Erro ao deletar tarefa', error);
+  }
+}
+
 // Saga para atualizar tarefa
 function* updateTarefaSaga(action) {
   try {
@@ -90,8 +106,7 @@ function* updateTarefaSaga(action) {
   }
 }
 
-// Demais sagas permanecem iguais...
-
+// Saga principal que agrupa todos os outros Sagas
 export default function* tarefasSaga() {
   yield takeLatest(FETCH_TAREFAS_REQUEST, fetchTarefasSaga);
   yield takeLatest(ADD_TAREFA_REQUEST, addTarefaSaga);

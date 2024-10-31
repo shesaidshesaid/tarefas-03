@@ -1,3 +1,5 @@
+// src/components/TarefasList.js
+
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -25,7 +27,7 @@ function TarefasList() {
   const [editingTarefa, setEditingTarefa] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
-  const [fotoSenhaInput, setFotoSenhaInput] = useState('');
+  const [fotoSenhaInput, setFotoSenhaInput] = useState(''); // Inicialize aqui
 
   useEffect(() => {
     dispatch(fetchTarefas());

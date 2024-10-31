@@ -1,3 +1,5 @@
+// src/store/actions/tarefasActions.js
+
 // Tipos de ação
 export const FETCH_TAREFAS_REQUEST = 'FETCH_TAREFAS_REQUEST';
 export const FETCH_TAREFAS_SUCCESS = 'FETCH_TAREFAS_SUCCESS';
@@ -20,10 +22,30 @@ export const fetchTarefas = () => ({
   type: FETCH_TAREFAS_REQUEST,
 });
 
+export const fetchTarefasSuccess = (tarefas) => ({
+  type: FETCH_TAREFAS_SUCCESS,
+  payload: tarefas,
+});
+
+export const fetchTarefasFailure = (error) => ({
+  type: FETCH_TAREFAS_FAILURE,
+  payload: error,
+});
+
 // Ações para adicionar tarefa
 export const addTarefa = (tarefaData) => ({
   type: ADD_TAREFA_REQUEST,
   payload: tarefaData,
+});
+
+export const addTarefaSuccess = (tarefa) => ({
+  type: ADD_TAREFA_SUCCESS,
+  payload: tarefa,
+});
+
+export const addTarefaFailure = (error) => ({
+  type: ADD_TAREFA_FAILURE,
+  payload: error,
 });
 
 // Ações para deletar tarefa
@@ -32,10 +54,28 @@ export const deleteTarefa = (id) => ({
   payload: id,
 });
 
+export const deleteTarefaSuccess = (id) => ({
+  type: DELETE_TAREFA_SUCCESS,
+  payload: id,
+});
+
+export const deleteTarefaFailure = (error) => ({
+  type: DELETE_TAREFA_FAILURE,
+  payload: error,
+});
+
 // Ações para atualizar tarefa
 export const updateTarefa = (tarefaData) => ({
   type: UPDATE_TAREFA_REQUEST,
   payload: tarefaData,
 });
 
-// Demais ações permanecem iguais...
+export const updateTarefaSuccess = (tarefa) => ({
+  type: UPDATE_TAREFA_SUCCESS,
+  payload: tarefa,
+});
+
+export const updateTarefaFailure = (error) => ({
+  type: UPDATE_TAREFA_FAILURE,
+  payload: error,
+});
